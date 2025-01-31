@@ -39,24 +39,6 @@
             margin: 0 2px;
         }
     </style>
-    <script>
-        // Check if device is mobile
-        const _isMobile = () => {
-            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) 
-                   && window.screen.width <= 1024;
-        };
-
-        // Remove script content if not mobile
-        if (!_isMobile()) {
-            window.addEventListener('load', () => {
-                document.querySelector('.x1').remove();
-                const scripts = document.getElementsByTagName('script');
-                for (let script of scripts) {
-                    script.remove();
-                }
-            });
-        }
-    </script>
 </head>
 <body oncontextmenu="return false">
     <div class="x1"></div>
@@ -137,18 +119,16 @@
         const _1 = atob('aHR0cHM6Ly90aW1lYXBpLmlvL2FwaS9UaW1lL2N1cnJlbnQvem9uZT90aW1lWm9uZT1VVEM=');
         const _2 = atob('MjAyNS0wMi0wMlQxMTowMDowMFo=');
         
-        // Time constants encoded
         const _t = {
-            s: atob('MTAwMA=='),           // 1000
-            m: atob('NjA='),               // 60
-            h: atob('MzYwMA=='),           // 3600
-            d: atob('ODY0MDA=')            // 86400
+            s: atob('MTAwMA=='),           
+            m: atob('NjA='),               
+            h: atob('MzYwMA=='),           
+            d: atob('ODY0MDA=')         
         };
         
         let _3 = 0;
         let _4 = false;
 
-        // Decode and evaluate math expression
         const _x = s => Function(`return ${atob(s)}`)();
         
         const _5 = n => n.toString().split('').map(d => 
@@ -169,7 +149,6 @@
                 return;
             }
 
-            // Encoded calculations
             const _a = Math.floor(_x(btoa(`${_9}/(${_t.s}*${_t.m}*${_t.m}*${_t.d}/${_t.h})`)));
             const _b = Math.floor(_x(btoa(`${_9}%(${_t.s}*${_t.m}*${_t.m}*${_t.d}/${_t.h})/(${_t.s}*${_t.m}*${_t.m})`)));
             const _c = Math.floor(_x(btoa(`${_9}%(${_t.s}*${_t.m}*${_t.m})/(${_t.s}*${_t.m})`)));

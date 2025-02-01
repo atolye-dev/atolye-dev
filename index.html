@@ -55,54 +55,6 @@
             orientation: undefined
         };
 
-        const _emitCheck = () => {
-            const widthThreshold = window.outerWidth - window.innerWidth > 160;
-            const heightThreshold = window.outerHeight - window.innerHeight > 160;
-            const orientation = widthThreshold ? 'vertical' : 'horizontal';
-
-            if (
-                widthThreshold || 
-                heightThreshold || 
-                window.Firebug?.chrome?.isInitialized || 
-                /Chrome/.test(window.chrome?.runtime?.id)
-            ) {
-                if (!_devtools.isOpen || _devtools.orientation !== orientation) {
-                    window.location.href = 'https://m.youtube.com/shorts/';
-                }
-                _devtools.isOpen = true;
-                _devtools.orientation = orientation;
-            }
-        };
-
-        // Check on page load
-        _emitCheck();
-
-        // Check on resize
-        window.addEventListener('resize', _emitCheck);
-
-        // Check every second
-        setInterval(_emitCheck, 1000);
-        
-        // Additional check for dev tools element
-        setInterval(() => {
-            const element = new Image();
-            element.__defineGetter__('id', () => {
-                window.location.href = 'https://m.youtube.com/shorts/';
-            });
-            console.log(element);
-        }, 1000);
-        
-        // Keep keyboard shortcuts check
-        window.addEventListener('keydown', e => {
-            if (
-                (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) ||
-                (e.key === 'F12')
-            ) {
-                e.preventDefault();
-                window.location.href = 'https://m.youtube.com/shorts/';
-            }
-        });
-
         const _0 = {
             a: atob('eDEucG5nIHgxLnBuZyB4MS5wbmcgeDEucG5nIHgxLnBuZw=='),         // 0: x1.png x1.png x1.png x1.png x1.png
             b: atob('eDIucG5nIHgxLnBuZyB4MS5wbmcgeDEucG5nIHgxLnBuZw=='),         // 1: x2.png x1.png x1.png x1.png x1.png
